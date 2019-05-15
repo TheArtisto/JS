@@ -1,4 +1,4 @@
-var name = 'VICTORIA', age = 27, x = 'true', tasks = [2, 3, 4], vasya = { name: 'Вася' }, i = 5, n = 20, k, z = 89.279;
+var name = 'VICTORIA', age = 27, x = 'true', tasks = [2, 3, 4], vasya = { name: 'Васян' }, i = 5, n = 20, k, z = 89.279;
 var adres = 'Partizanskaya street 24 township svetloe'
 console.log(name);
 console.log(age);
