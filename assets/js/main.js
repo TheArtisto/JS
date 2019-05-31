@@ -1,61 +1,88 @@
-var name = 'Alexander';
-  if (name === '') {
-    console.log('Нет имени')
-  } else console.log(name);
-
-  
-
-
-var browser = {
-  moz: 'mozila',
-  saf: 'safari',
-  op: 'opera',
-  tor: 'tor',
-  ch: function () {
-    return 'chrome';
+var myFunc = (function () {
+  var m = 0;
+  return function (i) {
+    m = i !== undefined ? i : m;
+    return m++;
   }
-};
-console.log(browser);
+}());
 
-for (i = 1; i <= 20; i++) {
-  if (i % 2 === 0) {
-    console.log(i);
-  }
-};
+console.log(myFunc());
+console.log(myFunc());
+console.log(myFunc());
+console.log(myFunc());
+console.log(myFunc(10));
+console.log(myFunc());
+console.log(myFunc());
+console.log(myFunc(100));
+console.log(myFunc());
+console.log(myFunc());
+console.log(myFunc());
 
-var postNumb = 8899,
-  status;
-switch (postNumb) {
-  case 5566: status = 'Dnepr'; break
-  case 7788: status = 'Lugansk'; break
-  case 8899: status = 'Poltava'; break
-  case 4455: status = 'Kremenchug'; break
-  case 3344: status = 'Sumi'; break
-  default: status = 'Неизвестный код';
-}
-console.log(postNumb + ' - ' + status);
-
-var age = 51;
-access = age <= 18 ? 'Доступ закрыт' : age <= 50 ? 'Доступ ограничен' : 'Доступ открыт';
-console.log(access);
-
-var seven = 0;
-do {
-  console.log(seven);
-  seven++;
-} while (seven < 8);
-
-
-function dot(arg1, arg2, callback) {
-  console.log('Число arg1 в степени arg2');
-  var bg = Math.pow(arg1, arg2);
-  callback(bg);
+function newFunc(k, l, callback) {
+  var step = function (k, l) {
+    if (l !== 1) {
+      return k *= step(k, l - 1);
+    }
+    else {
+      return k;
+    }
+  };
+  callback(step(k, l));
 }
 
-dot(2, 10, function (power) {
-  console.log('Результат arg3' + ' = ' + power);
-  
+newFunc(2, 6, function (rezultat) {
+  console.log('result  ' + rezultat);
 });
+
+var greeting = function () {
+  return 'My name is ' + this.name + ' Im ' + this.age + ' years old';
+}
+
+var visitor1 = {
+  name: 'Vasya',
+  age: 25,
+  _gender: 'male',
+  greeting: greeting,
+  get gender() { 
+    return this._gender; 
+  },
+  set gender(value) { 
+    this._gender = value; 
+  }
+}
+
+var visitor2 = {
+  name: 'Victoria',
+  age: 22,
+  _gender: 'female',
+  greeting: greeting,
+  get gender() { 
+    return this._gender; 
+  },
+  set gender(value) { 
+    this._gender = value; 
+  }
+}
+
+var visitor3 = {
+  name: 'David',
+  age: 30,
+  _gender: 'male',
+  greeting: greeting,
+  get gender() { 
+    return this._gender; 
+  },
+  set gender(value) { 
+    this._gender = value; 
+  }
+}
+
+
+console.log(visitor1.greeting() + '  gender: ' + (visitor1.gender));
+console.log(visitor2.greeting() + '  gender: ' + (visitor2.gender));
+console.log(visitor3.greeting() + '  gender: ' + (visitor3.gender));
+
+
 
 
 
