@@ -1,86 +1,54 @@
-var myFunc = (function () {
-  var m = 0;
-  return function (i) {
-    m = i !== undefined ? i : m;
-    return m++;
-  }
-}());
+var array = ['Lorem ipsum', 'Blanditiis, eaque', 'Iure, quis', 'Iure, voluptatum', 'Maxime, veniam', 'Inventore, a', 'Eius, qui', 'Accusantium, amet', 'Nemo,eos', 'Vero, quos'];
 
-console.log(myFunc());
-console.log(myFunc());
-console.log(myFunc());
-console.log(myFunc());
-console.log(myFunc(10));
-console.log(myFunc());
-console.log(myFunc());
-console.log(myFunc(100));
-console.log(myFunc());
-console.log(myFunc());
-console.log(myFunc());
-
-function newFunc(k, l, callback) {
-  var step = function (k, l) {
-    if (l !== 1) {
-      return k *= step(k, l - 1);
-    }
-    else {
-      return k;
-    }
-  };
-  callback(step(k, l));
+function oLetter(letter) {
+  return array.filter(function (let) {
+    return let.indexOf(letter) > -1;
+  })
 }
 
-newFunc(2, 6, function (rezultat) {
-  console.log('result  ' + rezultat);
-});
+console.log(oLetter('o'));
 
-var greeting = function () {
-  return 'My name is ' + this.name + ' Im ' + this.age + ' years old';
+
+var date = new Date();
+var order = date.getUTCFullYear()+'-'+( + (date.getUTCMonth() + 1))+'-'+( + date.getUTCDate())+'-'+date.getUTCHours()+'-'+date.getUTCMinutes();
+console.log(order);
+
+var localOrder = date.getDate()+'-'+(date.getMonth() + 1)+'-'+( + date.getFullYear())+'-'+date.getHours()+'-'+date.getMinutes()+'-'+date.getSeconds();
+console.log(localOrder);
+
+
+var dat = new Date('2019-06-1');
+function getWeekDay(dat) {
+  var days = ['Воскресенье','Понедельник','Вторник','Среда','Четверг','Пятница','Суббота'];
+   var toDay = dat.getDay();
+   console.log(days[toDay]);
 }
 
-var visitor1 = {
-  name: 'Vasya',
-  age: 25,
-  _gender: 'male',
-  greeting: greeting,
-  get gender() { 
-    return this._gender; 
-  },
-  set gender(value) { 
-    this._gender = value; 
-  }
+getWeekDay(dat);
+
+
+var dat = new Date('2019-06-1');
+function getLocalDay(dat) {
+   var tr = dat.getDay();
+   if (tr == 0) {
+     tr = 7;
+   } 
+     return tr;
 }
-
-var visitor2 = {
-  name: 'Victoria',
-  age: 22,
-  _gender: 'female',
-  greeting: greeting,
-  get gender() { 
-    return this._gender; 
-  },
-  set gender(value) { 
-    this._gender = value; 
-  }
-}
-
-var visitor3 = {
-  name: 'David',
-  age: 30,
-  _gender: 'male',
-  greeting: greeting,
-  get gender() { 
-    return this._gender; 
-  },
-  set gender(value) { 
-    this._gender = value; 
-  }
-}
+ console.log(getLocalDay(dat));
 
 
-console.log(visitor1.greeting() + '  gender: ' + (visitor1.gender));
-console.log(visitor2.greeting() + '  gender: ' + (visitor2.gender));
-console.log(visitor3.greeting() + '  gender: ' + (visitor3.gender));
+ var da = new Date('2019-06-1');
+
+ function getDateAgo(date, days) {
+   var da = new Date(date);
+   var bDay = new Date(da.setDate(da.getDate() - days));
+   return bDay.getDate();
+ }
+
+console.log(getDateAgo(da, 1)); 
+console.log(getDateAgo(da, 2)); 
+console.log(getDateAgo(da, 364));
 
 
 
